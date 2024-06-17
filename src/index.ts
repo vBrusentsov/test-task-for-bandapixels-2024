@@ -8,12 +8,14 @@ import {scraperRozetka} from "./service/scraperRozetka.service";
 
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = async (): Promise<void> => {
     const app: Express = express();
 
     app.use(express.json());
+
+    console.log();
     await connectDB();
 
     app.use('/api', scraperRouters);
