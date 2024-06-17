@@ -5,9 +5,9 @@ import {saveProductsDatabase} from "./saveScraper.service";
 
 
 export async function scrapeTelemart() {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page = await browser.newPage();
-    await page.goto('https://telemart.ua/ua/videocard/');
+    await page.goto('https://telemart.ua/ua/videocard/', {timeout: 1000000});
 
     await page.waitForSelector('.product-item');
 

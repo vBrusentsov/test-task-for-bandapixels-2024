@@ -6,7 +6,7 @@ import {saveProductsDatabase} from "./saveScraper.service";
 
 
 export async function scraperRozetka() {
-    const browser: Browser = await puppeteer.launch({});
+    const browser: Browser = await puppeteer.launch({args: ['--no-sandbox']});
     const page: Page = await browser.newPage();
     await page.goto('https://hard.rozetka.com.ua/ua/videocards/c80087/');
     await page.setViewport({ width: 1200, height: 800 });

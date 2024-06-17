@@ -9,20 +9,25 @@ import {scraperRozetka} from "./service/scraperRozetka.service";
 dotenv.config();
 
 const port = process.env.PORT || 5000;
-
 const start = async (): Promise<void> => {
-    const app: Express = express();
+    try {
+        const app: Express = express();
 
-    app.use(express.json());
+        app.use(express.json());
 
-    console.log();
-    await connectDB();
+        await connectDB();
+        app.get('/', (req, res) => {
+            res.status(200).send('healthCheck page');
+        })
+        app.use('/api', scraperRouters);
 
-    app.use('/api', scraperRouters);
+        app.listen(port, () => {
+            console.log(`Listening on port ${port}`);
+        });
+    } catch (error) {
+        console.error(error);
+    }
 
-    app.listen(port, () => {
-        console.log(`Listening on port ${port}`);
-    });
 }
 
 start();
