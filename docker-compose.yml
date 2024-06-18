@@ -1,18 +1,27 @@
 version: '3.8'
 
 services:
-  app:
-    build: .
+  backend:
+    build:
+      context: .
     ports:
-      - "3000:3000"
+      - "3050:3050"
     depends_on:
       - db
     volumes:
       - .:/app
-    command: npm start
-
     env_file:
       - .docker.env
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
 
   db:
     image: mysql:8.0
