@@ -18,7 +18,7 @@ export const Api: React.FC = () => {
 
         fetchData();
     }, []);
-    console.log(elements);
+    
     return (
         <div>
             <h1>Products</h1>
