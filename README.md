@@ -61,4 +61,19 @@ Example endpoint: http://localhost:3050/api/scrape/rozetka
 Description: Fetches and stores information about videocards from Rozetka.
 After successfully making these requests, the database will be populated with product data, and you will be able to render the list of products.
 
+**Viewing the Frontend Application**
+After a successful Docker build, you will see a message in the console similar to the following:
+
+```
+You can now view frontend in the browser.
+frontend-1  |
+frontend-1  |   Local:            http://localhost:3000
+frontend-1  |   On Your Network:  http://172.18.0.4:3000
+```
+This indicates that the frontend application is up and running and can be accessed via the provided URLs.
+
+Local: This URL can be used to view the application on the same machine where the Docker container is running.
+On Your Network: This URL allows other devices on the same network to access the application.
+Simply open a browser and navigate to one of the URLs to start using the frontend application.
+
 Don`t forget install Docker😅
