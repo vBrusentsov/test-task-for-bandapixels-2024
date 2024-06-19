@@ -4,7 +4,6 @@ import { appDataSource } from '../utils/ormconfig';
 export async function getAllElement() {
     try {
         const getElements = appDataSource.getRepository(Item);
-        console.log(getElements);
         return await getElements.find();
     } catch (error) {
         console.log(error);
