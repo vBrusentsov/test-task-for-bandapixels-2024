@@ -1,5 +1,5 @@
-import {Item} from "../entities/Item";
-import {appDataSource} from "../utils/ormconfig";
+import { Item } from '../entities/Item';
+import { appDataSource } from '../utils/ormconfig';
 
 export async function getAllElement() {
     try {

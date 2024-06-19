@@ -1,11 +1,8 @@
-import express, {Express} from 'express';
-import {connectDB} from './utils/db';
+import express, { Express } from 'express';
+import { connectDB } from './utils/db';
 import dotenv from 'dotenv';
-import cors from 'cors'
+import cors from 'cors';
 import scraperRouters from './router/scraperRouters';
-import {scrapeTelemart} from "./service/scraperTelemart.service";
-import {scraperRozetka} from "./service/scraperRozetka.service";
-
 
 dotenv.config();
 
@@ -16,12 +13,13 @@ const start = async (): Promise<void> => {
 
         app.use(express.json());
 
-        app.use(cors({
-            origin: '*',
-            methods: '*',
-            allowedHeaders: '*',
-        }))
-
+        app.use(
+            cors({
+                origin: '*',
+                methods: '*',
+                allowedHeaders: '*',
+            }),
+        );
         await connectDB();
         app.get('/', (req, res) => {
             res.status(200).send('healthCheck page');
@@ -34,7 +32,6 @@ const start = async (): Promise<void> => {
     } catch (error) {
         console.error(error);
     }
-
-}
+};
 
 start();
