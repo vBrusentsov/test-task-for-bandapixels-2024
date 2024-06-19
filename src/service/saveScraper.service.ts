@@ -31,7 +31,6 @@ export async function saveProductsDatabase(products: Product[]) {
 
                     // Збереження продукту у базі даних
                     await itemRepository.save(newItem);
-                    console.log(`Product ${product.title} saved to the database`);
                     return;
                 } else {
                     console.log(`Product ${product.title} does not have a valid link`);
