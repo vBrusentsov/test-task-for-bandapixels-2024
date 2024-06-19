@@ -26,7 +26,7 @@ If this will be done on your local machine, you should create an `.env` file fro
 ```
 PORT=5000
 
-DB_HOST=lacalhost
+DB_HOST=localhost
 DB_PORT=3306
 DB_USER=user
 DB_PASSWORD=password
