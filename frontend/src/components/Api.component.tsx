@@ -18,14 +18,19 @@ export const Api: React.FC = () => {
 
         fetchData();
     }, []);
+    console.log(elements);
     return (
         <div>
             <h1>Products</h1>
-            <ul className={styles.cardContainer}>
-                {elements.map(element => (
-                    <Card key={element.id} element={element} />
-                ))}
-            </ul>
+            {elements.length === 0 ? (
+                <p>No products found.</p>
+            ) : (
+                <ul className={styles.cardContainer}>
+                    {elements.map(element => (
+                        <Card key={element.id} element={element}/>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

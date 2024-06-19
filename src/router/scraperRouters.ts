@@ -24,6 +24,10 @@ scraperRouters.post('/scrape/rozetka', async ( request: Request, res: Response, 
 scraperRouters.get('/getElement', async (req, res, next: NextFunction) => {
     try {
         const element = await getAllElement();
+        if (element === undefined || element.length === 0) {
+            res.status(404).send('No element found with this route');
+            return;
+        }
         res.status(200).json(element);
     } catch (error) {
         console.log(`Error fetching element:, ${error}`);
