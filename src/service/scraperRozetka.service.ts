@@ -17,25 +17,37 @@ export async function scraperRozetka() {
 
     $('.catalog-grid__cell').each((index, element) => {
         const link = $(element).find('.product-link').attr('href') || null;
-        const title = $(element).find('.goods-tile__title').text().trim() || null;
-        const subtitle = $(element).find('.goods-title__subtitle').text().trim() || null;
-        const description = $(element).find('.goods-title__description').text().trim() || null;
+        const title =
+            $(element).find('.goods-tile__title').text().trim() || null;
+        const subtitle =
+            $(element).find('.goods-title__subtitle').text().trim() || null;
+        const description =
+            $(element).find('.goods-title__description').text().trim() || null;
         const priceElement = $(element).find('.goods-tile__price-value');
         const priceText = priceElement.text().trim();
-        const price = parseFloat(priceText.replace(/[^\d.]/g, '').replace(',', '.')) || null;
+        const price =
+            parseFloat(priceText.replace(/[^\d.]/g, '').replace(',', '.')) ||
+            null;
 
         const specifications: { [key: string]: string } = {};
         $(element)
             .find('.product-short-char__item')
             .each((i, specElement) => {
-                const label = $(specElement).find('.product-short-char__item__label').text().trim();
-                const value = $(specElement).find('.product-short-char__item__value').text().trim();
+                const label = $(specElement)
+                    .find('.product-short-char__item__label')
+                    .text()
+                    .trim();
+                const value = $(specElement)
+                    .find('.product-short-char__item__value')
+                    .text()
+                    .trim();
                 specifications[label] = value;
             });
         const specificationJson = JSON.stringify(specifications) || null;
 
         const type = $('.goods-tile__content').attr('data-prod-type') || null;
-        const image = $(element).find('.goods-tile__picture img').attr('src') || null;
+        const image =
+            $(element).find('.goods-tile__picture img').attr('src') || null;
         const source = 'rozetka';
 
         products.push({
@@ -47,7 +59,7 @@ export async function scraperRozetka() {
             specifications: specificationJson,
             type,
             image,
-            source,
+            source
         });
     });
 
@@ -58,7 +70,7 @@ export async function scraperRozetka() {
 
 async function autoScroll(page: Page) {
     await page.evaluate(() => {
-        return new Promise<void>((resolve, reject) => {
+        return new Promise<void>((resolve) => {
             let totalHeight = 0;
             const distance = 100;
             const scrollInterval = 10; // Зменшуємо інтервал до 50 мілісекунд

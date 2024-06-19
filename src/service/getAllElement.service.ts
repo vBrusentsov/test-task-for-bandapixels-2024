@@ -6,6 +6,6 @@ export async function getAllElement() {
         const getElements = appDataSource.getRepository(Item);
         return await getElements.find();
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }

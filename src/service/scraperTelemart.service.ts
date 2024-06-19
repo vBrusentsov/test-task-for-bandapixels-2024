@@ -16,24 +16,35 @@ export async function scrapeTelemart() {
     const products: Product[] = [];
 
     $('.product-item__inner').each((index, element) => {
-        const title = $(element).find('.product-item__title a').text().trim() || null;
-        const subtitle = $(element).find('.product-card__subtitle').text().trim() || null;
-        const description = $(element).find('.product-card__description').text().trim() || null;
+        const title =
+            $(element).find('.product-item__title a').text().trim() || null;
+        const subtitle =
+            $(element).find('.product-card__subtitle').text().trim() || null;
+        const description =
+            $(element).find('.product-card__description').text().trim() || null;
         const price = Number($(element).attr('data-price')) || null;
 
         const specifications: { [key: string]: string } = {};
         $(element)
             .find('.product-short-char__item')
             .each((i, specElement) => {
-                const label = $(specElement).find('.product-short-char__item__label').text().trim();
-                const value = $(specElement).find('.product-short-char__item__value').text().trim();
+                const label = $(specElement)
+                    .find('.product-short-char__item__label')
+                    .text()
+                    .trim();
+                const value = $(specElement)
+                    .find('.product-short-char__item__value')
+                    .text()
+                    .trim();
                 specifications[label] = value;
             });
         const specificationJson = JSON.stringify(specifications);
 
         const type = $(element).attr('data-prod-type') || null; // Додайте логіку для визначення типу
-        const image = $(element).find('.product-item__pic__img img').attr('src') || null;
-        const link = $(element).find('.product-item__title a').attr('href') || null;
+        const image =
+            $(element).find('.product-item__pic__img img').attr('src') || null;
+        const link =
+            $(element).find('.product-item__title a').attr('href') || null;
         const source = 'telemart';
 
         products.push({
@@ -45,7 +56,7 @@ export async function scrapeTelemart() {
             specifications: specificationJson,
             type,
             image,
-            source,
+            source
         });
     });
 

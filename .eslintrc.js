@@ -3,12 +3,12 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     parserOptions: {
         ecmaVersion: 2020,
-        sourceType: 'module',
+        sourceType: 'module'
     },
     extends: [
         'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'plugin:prettier/recommended',
+        'plugin:prettier/recommended'
     ],
     rules: {
         'prefer-const': 'error',
@@ -18,6 +18,6 @@ module.exports = {
         'no-unused-vars': ['error', { vars: 'local' }],
         'no-plusplus': 'off',
         'no-cond-assign': ['error', 'always'],
-        eqeqeq: ['warn', 'smart'],
-    },
+        eqeqeq: ['warn', 'smart']
+    }
 };

@@ -17,8 +17,8 @@ const start = async (): Promise<void> => {
             cors({
                 origin: '*',
                 methods: '*',
-                allowedHeaders: '*',
-            }),
+                allowedHeaders: '*'
+            })
         );
         await connectDB();
         app.get('/', (req, res) => {

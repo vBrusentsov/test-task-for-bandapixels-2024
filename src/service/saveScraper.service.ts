@@ -10,11 +10,13 @@ export async function saveProductsDatabase(products: Product[]) {
             products.map(async (product) => {
                 if (product.link) {
                     const existingItem = await itemRepository.findOne({
-                        where: { link: product.link },
+                        where: { link: product.link }
                     });
 
                     if (existingItem) {
-                        console.log(`Product with link: ${product.link} already exists`);
+                        console.log(
+                            `Product with link: ${product.link} already exists`
+                        );
                         return;
                     }
 
@@ -31,12 +33,13 @@ export async function saveProductsDatabase(products: Product[]) {
 
                     // Збереження продукту у базі даних
                     await itemRepository.save(newItem);
-                    console.log(`Product ${product.title} saved to the database`);
                     return;
                 } else {
-                    console.log(`Product ${product.title} does not have a valid link`);
+                    console.log(
+                        `Product ${product.title} does not have a valid link`
+                    );
                 }
-            }),
+            })
         );
     } catch (error) {
         console.error('Error saving products to the database:', error);

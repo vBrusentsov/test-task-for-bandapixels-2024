@@ -1,4 +1,4 @@
-import express, { Router, Request, Response, NextFunction } from 'express';
+import { Router, Request, Response } from 'express';
 import { scrapeTelemart } from '../service/scraperTelemart.service';
 import { scraperRozetka } from '../service/scraperRozetka.service';
 import { getAllElement } from '../service/getAllElement.service';
@@ -10,24 +10,28 @@ scraperRouters.post(
     async (request: Request, res: Response) => {
         try {
             await scrapeTelemart();
-            res.status(200).send({ massage: 'get info about videocard on Telemart' });
+            res.status(200).send({
+                massage: 'get info about videocard on Telemart'
+            });
         } catch (error) {
             res.status(500).send({ message: error });
         }
-    },
+    }
 );
 scraperRouters.post(
     '/scrape/rozetka',
     async (request: Request, res: Response) => {
         try {
             await scraperRozetka();
-            res.status(200).send({ massage: 'get info about videocard  on Rozetka' });
+            res.status(200).send({
+                massage: 'get info about videocard  on Rozetka'
+            });
         } catch (error) {
             res.status(500).send({ message: error });
         }
-    },
+    }
 );
-scraperRouters.get('/getElement', async (req, res, next: NextFunction) => {
+scraperRouters.get('/getElement', async (req, res) => {
     try {
         const element = await getAllElement();
         if (element === undefined || element.length === 0) {
