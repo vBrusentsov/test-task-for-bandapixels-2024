@@ -28,8 +28,7 @@ export async function saveProductsDatabase(products: Product[]) {
                     newItem.profileImage = product.image;
                     newItem.source = product.source;
                     newItem.link = product.link;
-
-                    // Збереження продукту у базі даних
+                    
                     await itemRepository.save(newItem);
                     return;
                 } else {
