@@ -30,7 +30,6 @@ export async function saveProductsDatabase(products: Product[]) {
                     newItem.profileImage = product.image;
                     newItem.source = product.source;
                     newItem.link = product.link;
-                    
                     await itemRepository.save(newItem);
                     return;
                 } else {

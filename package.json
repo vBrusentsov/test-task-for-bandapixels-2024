@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "format": "prettier --write '**/*.{js,ts,tsx,json,css,md}'",
     "dev": "nodemon --exec ts-node src/index.ts",
     "start": "ts-node src/index.ts",
     "build": "docker build -t test_task_banda_pixels .",

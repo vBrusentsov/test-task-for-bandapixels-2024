@@ -53,8 +53,6 @@
     align-items: center;
 }
 
-
-
 .productPrice {
     display: flex;
     justify-content: center;
@@ -64,21 +62,21 @@
     line-height: 30px;
 }
 
-.productSource{
+.productSource {
     display: flex;
     justify-content: center;
     margin: 0;
     font-weight: 600;
 }
 
-.productType{
+.productType {
     display: flex;
     justify-content: center;
     margin: 0;
     font-weight: 600;
 }
 
-.goToCardContainer{
+.goToCardContainer {
     display: flex;
     justify-content: center;
 }
